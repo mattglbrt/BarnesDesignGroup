@@ -14,6 +14,8 @@
 @source "../patterns/**/*.html";
 @source "../content/**/*.html";
 @source "../templates/**/*.html";
+@source "../scripts/**/*.js";
+@source "../views/**/*.twig";
 
 /* Theme layer */
 @import './core/wordpress.css' layer(theme);

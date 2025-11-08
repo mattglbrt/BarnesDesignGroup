@@ -11,18 +11,20 @@
  */
 
 import { initFormHandler } from './form-handler';
+import { initLucideIcons } from './lucide-icons';
+import { initHeroSlider } from './hero-slider';
+import { initBeforeAfterSlider } from './before-after-slider';
 
 /**
  * Initialize all components
  * Called from main.js on DOMContentLoaded
  */
 export function initComponents() {
-  // Initialize form handler (example pattern)
-  initFormHandler();
+  // Initialize Lucide icons first (required by other components)
+  initLucideIcons();
 
-  // Add more component initializations here
-  // Example:
-  // initMobileMenu();
-  // initCarousels();
-  // initModals();
+  // Initialize interactive components
+  initFormHandler();
+  initHeroSlider();
+  initBeforeAfterSlider();
 }
