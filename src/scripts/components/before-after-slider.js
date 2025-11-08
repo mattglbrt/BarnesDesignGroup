@@ -6,7 +6,7 @@
  * - Touch support for mobile
  * - Keyboard navigation (arrow keys)
  * - Accessible range input
- * - Smooth position updates
+ * - Smooth position updates with requestAnimationFrame
  */
 
 /**
@@ -14,32 +14,57 @@
  * Only runs if compare element exists
  */
 export function initBeforeAfterSlider() {
-  const compare = document.getElementById('compare');
-  const afterLayer = document.getElementById('afterLayer');
-  const divider = document.getElementById('divider');
-  const knob = document.getElementById('knob');
-  const range = document.getElementById('compareRange');
+  const compare = document.querySelector('.compare-slider');
 
   // Guard clause: Exit if compare slider not found
-  if (!compare || !afterLayer || !divider || !knob || !range) {
+  if (!compare) {
+    return;
+  }
+
+  const afterLayer = compare.querySelector('[data-compare-after]');
+  const divider = compare.querySelector('[data-compare-divider]');
+  const knob = compare.querySelector('[data-compare-knob]');
+  const range = compare.querySelector('[data-compare-range]');
+
+  // Guard clause: Exit if any required element is missing
+  if (!afterLayer || !divider || !knob || !range) {
     return;
   }
 
   let isDragging = false;
+  let currentPercent = 50;
+  let animationFrameId = null;
+
+  /**
+   * Update DOM elements with current position
+   * Uses requestAnimationFrame for smooth rendering
+   */
+  function updatePosition(pct) {
+    currentPercent = Math.max(0, Math.min(pct, 100));
+
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+
+    animationFrameId = requestAnimationFrame(() => {
+      afterLayer.style.width = currentPercent + '%';
+      divider.style.left = currentPercent + '%';
+      knob.style.left = currentPercent + '%';
+      range.value = currentPercent;
+      knob.setAttribute('aria-valuenow', Math.round(currentPercent));
+    });
+  }
 
   /**
    * Set slider position based on mouse/touch X coordinate
    * Calculates percentage within container bounds
    */
   function setPositionByClientX(clientX) {
-    const rect = compare.querySelector('div.relative.w-full').getBoundingClientRect();
+    const rect = compare.querySelector('[data-compare-inner]').getBoundingClientRect();
     let x = clientX - rect.left;
     x = Math.max(0, Math.min(x, rect.width));
     const pct = (x / rect.width) * 100;
-    afterLayer.style.width = pct + '%';
-    divider.style.left = pct + '%';
-    knob.style.left = pct + '%';
-    range.value = pct;
+    updatePosition(pct);
   }
 
   /**
@@ -47,10 +72,7 @@ export function initBeforeAfterSlider() {
    * Used for keyboard and range input control
    */
   function setPositionByPercent(pct) {
-    pct = Math.max(0, Math.min(pct, 100));
-    afterLayer.style.width = pct + '%';
-    divider.style.left = pct + '%';
-    knob.style.left = pct + '%';
+    updatePosition(pct);
   }
 
   /**
@@ -59,6 +81,9 @@ export function initBeforeAfterSlider() {
    */
   function startDrag(e) {
     isDragging = true;
+    document.body.style.cursor = 'ew-resize';
+    document.body.style.userSelect = 'none';
+
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     setPositionByClientX(clientX);
     e.preventDefault();
@@ -69,6 +94,8 @@ export function initBeforeAfterSlider() {
    */
   function onMove(e) {
     if (!isDragging) return;
+
+    e.preventDefault();
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     setPositionByClientX(clientX);
   }
@@ -77,7 +104,11 @@ export function initBeforeAfterSlider() {
    * End dragging interaction
    */
   function endDrag() {
-    isDragging = false;
+    if (isDragging) {
+      isDragging = false;
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    }
   }
 
   // Initialize to 50% position
@@ -97,12 +128,12 @@ export function initBeforeAfterSlider() {
   knob.addEventListener('keydown', (e) => {
     const step = 2; // percent per keypress
     if (e.key === 'ArrowLeft') {
-      setPositionByPercent(parseFloat(range.value) - step);
-      range.value = parseFloat(range.value) - step;
+      e.preventDefault();
+      setPositionByPercent(currentPercent - step);
     }
     if (e.key === 'ArrowRight') {
-      setPositionByPercent(parseFloat(range.value) + step);
-      range.value = parseFloat(range.value) + step;
+      e.preventDefault();
+      setPositionByPercent(currentPercent + step);
     }
   });
 

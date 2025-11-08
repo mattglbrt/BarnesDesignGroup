@@ -79,3 +79,33 @@
 .slide-up {
   animation: slideUp 0.6s ease-out;
 }
+
+/* Marquee animation for streaming text */
+@keyframes marqueeX {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-36s {
+  animation: marqueeX 36s linear infinite;
+}
+
+.marquee-44s-reverse {
+  animation: marqueeX 44s linear infinite reverse;
+}
+
+/* Aspect ratio utilities */
+.aspect-video {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+/* Range input accent color */
+input[type="range"].accent-neutral-900 {
+  accent-color: #0a0a0a;
+}

@@ -1,24 +1,21 @@
-<section id="cta" class="relative w-full min-h-screen">
+<section id="cta" class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
         <img
           src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/704e1fb3-a82b-42a1-ad5f-f30d6c0fb05c_1600w.jpg"
           alt="Modern solar-powered home with EV at dusk"
           class="absolute inset-0 w-full h-full object-cover"
         />
-        <div class="absolute inset-0 bg-neutral-900/30"></div>
+        <div class="absolute inset-0 bg-neutral-900/40"></div>
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/50"
+          class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/60"
         ></div>
 
         <!-- Streaming text -->
         <div
-          class="relative z-10 h-full w-full flex flex-col items-center justify-center gap-10 overflow-hidden text-center"
+          class="relative z-10 w-full flex flex-col items-center justify-center gap-8 py-20"
         >
           <!-- Row 1 -->
-          <div class="w-[200%]">
-            <div
-              class="flex items-center gap-12"
-              style="animation: marqueeX 36s linear infinite;"
-            >
+          <div class="w-full overflow-hidden">
+            <div class="flex items-center gap-12 marquee-36s">
               <p
                 class="whitespace-nowrap text-white text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight"
               >
@@ -64,11 +61,8 @@
           </div>
 
           <!-- Row 2 (reverse for depth) -->
-          <div class="w-[200%]">
-            <div
-              class="flex items-center gap-12"
-              style="animation: marqueeX 44s linear infinite reverse;"
-            >
+          <div class="w-full overflow-hidden">
+            <div class="flex items-center gap-12 marquee-44s-reverse">
               <p
                 class="whitespace-nowrap text-white/90 text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight"
               >

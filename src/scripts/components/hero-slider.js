@@ -14,8 +14,8 @@
  */
 export function initHeroSlider() {
   const slides = Array.from(document.querySelectorAll('[data-slide]'));
-  const prev = document.getElementById('prevBtn');
-  const next = document.getElementById('nextBtn');
+  const prev = document.querySelector('[data-hero-prev]');
+  const next = document.querySelector('[data-hero-next]');
   const dots = Array.from(document.querySelectorAll('[data-dot]'));
 
   // Guard clause: Exit if no slides found

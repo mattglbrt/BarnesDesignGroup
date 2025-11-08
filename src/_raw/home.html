@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Atelier — Architecture &amp; Homes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes marqueeX {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-neutral-50 text-neutral-900 antialiased selection:bg-neutral-900 selection:text-neutral-50"
+    style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial;"
+  >
+    <header class="absolute inset-x-0 top-0 z-50">
+      <div
+        class="max-w-7xl mx-auto px-6 sm:px-8 py-5 flex items-center justify-between"
+      >
+        <a href="#" class="inline-flex items-center gap-2">
+          <div class="text-[11px] tracking-[0.14em] font-medium text-white/90">
+            ATELIER
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-7">
+          <a href="#" class="text-sm text-white/80 hover:text-white transition">
+            Projects
+          </a>
+          <a href="#" class="text-sm text-white/80 hover:text-white transition">
+            Studio
+          </a>
+          <a href="#" class="text-sm text-white/80 hover:text-white transition">
+            Journal
+          </a>
+          <a href="#" class="text-sm text-white/80 hover:text-white transition">
+            Contact
+          </a>
+        </nav>
+        <div class="hidden sm:flex">
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 h-10 px-4 rounded-full bg-white/90 backdrop-blur text-neutral-900 text-sm hover:bg-white transition border border-white/20"
+          >
+            Project Inquiry
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+        <button
+          class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-white/20 bg-white/10 hover:bg-white/15 transition"
+          aria-label="Open menu"
+        >
+          <i data-lucide="menu" class="w-5 h-5 text-white"></i>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Full-screen Hero Slider -->
+      <section class="relative w-full min-h-screen">
+        <div
+          id="hero-slider"
+          class="relative w-full min-h-screen overflow-hidden"
+        >
+          <!-- Slides -->
+          <div class="absolute inset-0">
+            <img
+              data-slide=""
+              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out opacity-100"
+              src="https://images.unsplash.com/photo-1533157950006-c38844053d55?q=80&amp;w=2400&amp;auto=format&amp;fit=crop"
+              alt="Minimal concrete home with deep overhang at dusk"
+            />
+            <img
+              data-slide=""
+              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out opacity-0"
+              src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&amp;w=2400&amp;auto=format&amp;fit=crop"
+              alt="Warm illuminated courtyard residence in the evening"
+            />
+            <img
+              data-slide=""
+              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out opacity-0"
+              src="https://images.unsplash.com/photo-1621619856624-42fd193a0661?w=1080&q=80"
+              alt="Contemporary hillside villa with large windows"
+            />
+          </div>
+
+          <!-- Overlays for readability -->
+          <div
+            class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/40"
+          ></div>
+
+          <!-- Content: Title + CTA -->
+          <div class="absolute inset-x-0 bottom-0">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 pb-24">
+              <h1
+                class="text-4xl sm:text-6xl lg:text-7xl leading-[1.04] font-semibold tracking-tight text-white max-w-4xl"
+                style="font-family: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;"
+              >
+                Considered Architecture for Timeless Homes
+              </h1>
+              <div class="mt-6">
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-white text-neutral-900 text-sm hover:bg-neutral-100 transition shadow-sm border border-white/20"
+                >
+                  Start a Project
+                  <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overlay Controls -->
+          <div
+            class="pointer-events-none absolute inset-0 flex items-center justify-between px-3 sm:px-4"
+          >
+            <button
+              id="prevBtn"
+              class="pointer-events-auto inline-flex items-center justify-center h-12 w-12 rounded-full bg-white/80 backdrop-blur border border-white/30 text-neutral-900 hover:bg-white transition"
+              aria-label="Previous slide"
+            >
+              <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <button
+              id="nextBtn"
+              class="pointer-events-auto inline-flex items-center justify-center h-12 w-12 rounded-full bg-white/80 backdrop-blur border border-white/30 text-neutral-900 hover:bg-white transition"
+              aria-label="Next slide"
+            >
+              <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- Pagination Dots -->
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2">
+            <div id="dots" class="flex items-center gap-2">
+              <button
+                data-dot="0"
+                class="h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white transition"
+              ></button>
+              <button
+                data-dot="1"
+                class="h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white transition"
+              ></button>
+              <button
+                data-dot="2"
+                class="h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white transition"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        <div class="border-t border-neutral-200"></div>
+      </div>
+
+      <!-- Content Section (Two-column) -->
+      <section class="relative">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+          <div
+            class="py-20 sm:py-24 lg:py-28 grid md:grid-cols-12 gap-12 lg:gap-16 items-center"
+          >
+            <!-- Copy -->
+            <div class="md:col-span-6">
+              <div
+                class="text-[11px] tracking-[0.14em] uppercase text-neutral-500 font-medium"
+              >
+                Architects
+              </div>
+              <h2
+                class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.06]"
+              >
+                It’s more than our job, it’s our mission.
+              </h2>
+              <p
+                class="mt-6 text-base sm:text-lg leading-relaxed text-neutral-700"
+              >
+                Our studio brings deep experience across residential, cultural,
+                and institutional work. From ground‑up commissions to thoughtful
+                renovations, we pursue clarity, craft, and enduring simplicity.
+                We also assist with construction administration to ensure that
+                design intent translates faithfully on site.
+              </p>
+
+              <div class="mt-10 grid grid-cols-2 gap-8 sm:gap-12">
+                <div>
+                  <div
+                    class="text-3xl sm:text-4xl font-semibold tracking-tight"
+                  >
+                    30+
+                  </div>
+                  <div class="mt-2 text-sm text-neutral-600">
+                    Years of experience
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="text-3xl sm:text-4xl font-semibold tracking-tight"
+                  >
+                    800+
+                  </div>
+                  <div class="mt-2 text-sm text-neutral-600">
+                    Projects completed
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-10">
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:opacity-80 transition"
+                >
+                  Explore our studio
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Image -->
+            <div class="md:col-span-6">
+              <div class="relative overflow-hidden rounded-2xl shadow-sm">
+                <img
+                  src="https://images.unsplash.com/photo-1577412647305-991150c7d163?q=80&amp;w=2000&amp;auto=format&amp;fit=crop"
+                  alt="Undulating acoustic ceiling detail in a light-filled corridor"
+                  class="w-full h-[420px] sm:h-[520px] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        <div class="border-t border-neutral-200"></div>
+      </div>
+
+      <!-- Before & After Comparison -->
+      <section class="relative">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 py-20 sm:py-24 lg:py-28">
+          <div class="max-w-3xl">
+            <h3 class="text-3xl sm:text-4xl font-semibold tracking-tight">
+              Before &amp; After
+            </h3>
+            <p class="mt-4 text-base sm:text-lg text-neutral-700">
+              Drag the handle to compare an in‑progress shell with the completed
+              space. Precision in detailing transforms structure into
+              atmosphere.
+            </p>
+          </div>
+
+          <!-- Compare Component -->
+          <div
+            id="compare"
+            class="mt-10 relative w-full rounded-2xl overflow-hidden bg-neutral-200 select-none bg-neutral-100 ring-1 ring-black/5"
+          >
+            <!-- Maintain aspect by padding box -->
+            <div
+              class="relative w-full cursor-ew-resize"
+              style="padding-bottom: 56.25%;"
+            >
+              <!-- Base (Before) -->
+              <img
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&amp;w=2000&amp;auto=format&amp;fit=crop"
+                alt="Before: interior under construction"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+
+              <!-- Overlay (After) -->
+              <div
+                id="afterLayer"
+                class="absolute inset-y-0 left-0 w-1/2 overflow-hidden transition-all duration-200 ease-out"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&amp;w=2000&amp;auto=format&amp;fit=crop"
+                  alt="After: finished modern interior"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+
+              <!-- Labels -->
+              <div class="absolute left-4 top-4 z-20">
+                <span
+                  class="inline-flex items-center h-8 px-3 rounded-full text-xs font-medium bg-white/80 backdrop-blur text-neutral-900 shadow-sm border border-white/40"
+                >
+                  Before
+                </span>
+              </div>
+              <div class="absolute right-4 top-4 z-20">
+                <span
+                  class="inline-flex items-center h-8 px-3 rounded-full text-xs font-medium bg-white/80 backdrop-blur text-neutral-900 shadow-sm border border-white/40"
+                >
+                  After
+                </span>
+              </div>
+
+              <!-- Divider / Handle -->
+              <div
+                id="divider"
+                class="absolute top-0 z-30 h-full w-0.5 bg-white/80 left-1/2 bg-white transition-all duration-200 ease-out shadow-[0_0_0_1px_rgba(0,0,0,0.08)]"
+              ></div>
+
+              <!-- Draggable Knob -->
+              <button
+                id="knob"
+                class="absolute z-40 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-sm border border-neutral-200 flex items-center justify-center hover:shadow transition cursor-ew-resize backdrop-blur bg-white/95 ring-1 ring-black/5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20 transition-all duration-200 ease-out"
+                aria-label="Drag to compare"
+                role="slider"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="50"
+              >
+                <i
+                  data-lucide="chevrons-left-right"
+                  class="w-5 h-5 text-neutral-700"
+                ></i>
+              </button>
+
+              <!-- Optional range for keyboard access -->
+              <input
+                id="compareRange"
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                aria-label="Comparison slider"
+                class="absolute z-40 left-1/2 -translate-x-1/2 bottom-5 w-[70%] h-1 appearance-none bg-white/40 rounded-full cursor-ew-resize sr-only"
+                style="accent-color: #0a0a0a;"
+              />
+            </div>
+
+            <!-- Hint -->
+            <div class="flex items-center gap-2 text-sm text-neutral-600 mt-4">
+              <i data-lucide="hand" class="w-4 h-4"></i>
+              <span>Drag the handle or use the arrow keys.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        <div class="border-t border-neutral-200"></div>
+      </div>
+
+      <!-- Portfolio: Pinned content left, scrolling cards right -->
+      <section class="relative">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 py-20 sm:py-24 lg:py-28">
+          <div class="grid md:grid-cols-12 gap-12 lg:gap-16">
+            <!-- Left copy (sticky) -->
+            <aside class="md:col-span-5 lg:col-span-5">
+              <div class="md:sticky md:top-24">
+                <div
+                  class="text-[11px] tracking-[0.14em] uppercase text-neutral-500 font-medium"
+                >
+                  Portfolio
+                </div>
+                <h3
+                  class="mt-5 text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.04]"
+                >
+                  Architectural services for churches, hotels, residences,
+                  commercial projects, industrial expansions, restaurants, and
+                  government work.
+                </h3>
+                <div class="mt-8">
+                  <a
+                    href="#"
+                    class="inline-flex items-center h-11 px-5 gap-2 rounded-full border border-neutral-300 bg-white text-sm hover:border-neutral-900 hover:shadow-sm transition"
+                  >
+                    <span
+                      class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-neutral-300"
+                    >
+                      <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                    </span>
+                    View All Projects
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Right column: cards -->
+            <div class="md:col-span-7 lg:col-span-7">
+              <div class="space-y-20">
+                <!-- Card 1 -->
+                <article class="group">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <div
+                        class="text-[11px] tracking-[0.14em] uppercase text-neutral-500 font-medium"
+                      >
+                        Churches
+                      </div>
+                      <h4
+                        class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight"
+                      >
+                        Sovereign Shores Baptist Church
+                      </h4>
+                    </div>
+                    <a
+                      href="#"
+                      class="hidden sm:inline-flex items-center justify-center h-9 w-9 rounded-full border border-neutral-300 hover:border-neutral-900 transition"
+                    >
+                      <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                  </div>
+                  <a
+                    href="#"
+                    class="mt-5 block overflow-hidden rounded-2xl ring-1 ring-black/5 bg-neutral-100"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&amp;w=2400&amp;auto=format&amp;fit=crop"
+                      alt="Warm, modern worship interior with sculptural wall and shelving"
+                      class="w-full h-[300px] sm:h-[420px] object-cover transition duration-500 group-hover:scale-[1.03]"
+                    />
+                  </a>
+                  <div
+                    class="mt-3 flex items-center justify-between text-sm text-neutral-600"
+                  >
+                    <span>Houston, TX</span>
+                    <span
+                      class="inline-flex items-center gap-1 text-neutral-900 font-medium"
+                    >
+                      View Project
+                      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </span>
+                  </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="group">
+                  <div
+                    class="text-[11px] tracking-[0.14em] uppercase text-neutral-500 font-medium"
+                  >
+                    Commercial
+                  </div>
+                  <h4
+                    class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight"
+                  >
+                    Office Spaces
+                  </h4>
+                  <a
+                    href="#"
+                    class="mt-5 block overflow-hidden rounded-2xl ring-1 ring-black/5 bg-neutral-100"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&amp;w=2400&amp;auto=format&amp;fit=crop"
+                      alt="Contemporary office with natural light and modular shelving"
+                      class="w-full h-[300px] sm:h-[420px] object-cover transition duration-500 group-hover:scale-[1.03]"
+                    />
+                  </a>
+                  <div
+                    class="mt-3 flex items-center justify-between text-sm text-neutral-600"
+                  >
+                    <span>Seattle, WA</span>
+                    <span
+                      class="inline-flex items-center gap-1 text-neutral-900 font-medium"
+                    >
+                      View Project
+                      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </span>
+                  </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="group">
+                  <div
+                    class="text-[11px] tracking-[0.14em] uppercase text-neutral-500 font-medium"
+                  >
+                    Residential
+                  </div>
+                  <h4
+                    class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight"
+                  >
+                    Cliffside Residence
+                  </h4>
+                  <a
+                    href="#"
+                    class="mt-5 block overflow-hidden rounded-2xl ring-1 ring-black/5 bg-neutral-100"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&amp;w=2400&amp;auto=format&amp;fit=crop"
+                      alt="Residence perched on cliff with panoramic glazing"
+                      class="w-full h-[300px] sm:h-[420px] object-cover transition duration-500 group-hover:scale-[1.03]"
+                    />
+                  </a>
+                  <div
+                    class="mt-3 flex items-center justify-between text-sm text-neutral-600"
+                  >
+                    <span>Big Sur, CA</span>
+                    <span
+                      class="inline-flex items-center gap-1 text-neutral-900 font-medium"
+                    >
+                      View Project
+                      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </span>
+                  </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="group">
+                  <div
+                    class="text-[11px] tracking-[0.14em] uppercase text-neutral-500 font-medium"
+                  >
+                    Cultural
+                  </div>
+                  <h4
+                    class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight"
+                  >
+                    Gallery Annex
+                  </h4>
+                  <a
+                    href="#"
+                    class="mt-5 block overflow-hidden rounded-2xl ring-1 ring-black/5 bg-neutral-100"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1642615835477-d303d7dc9ee9?w=1080&q=80"
+                      alt="Minimal gallery interior with natural daylight"
+                      class="w-full h-[300px] sm:h-[420px] object-cover transition duration-500 group-hover:scale-[1.03]"
+                    />
+                  </a>
+                  <div
+                    class="mt-3 flex items-center justify-between text-sm text-neutral-600"
+                  >
+                    <span>Chicago, IL</span>
+                    <span
+                      class="inline-flex items-center gap-1 text-neutral-900 font-medium"
+                    >
+                      View Project
+                      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </span>
+                  </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="group">
+                  <div
+                    class="text-[11px] tracking-[0.14em] uppercase text-neutral-500 font-medium"
+                  >
+                    Hospitality
+                  </div>
+                  <h4
+                    class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight"
+                  >
+                    Mountain Retreat
+                  </h4>
+                  <a
+                    href="#"
+                    class="mt-5 block overflow-hidden rounded-2xl ring-1 ring-black/5 bg-neutral-100"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&amp;w=2400&amp;auto=format&amp;fit=crop"
+                      alt="Serene alpine lodge with warm interiors"
+                      class="w-full h-[300px] sm:h-[420px] object-cover transition duration-500 group-hover:scale-[1.03]"
+                    />
+                  </a>
+                  <div
+                    class="mt-3 flex items-center justify-between text-sm text-neutral-600"
+                  >
+                    <span>Telluride, CO</span>
+                    <span
+                      class="inline-flex items-center gap-1 text-neutral-900 font-medium"
+                    >
+                      View Project
+                      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </span>
+                  </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="group">
+                  <div
+                    class="text-[11px] tracking-[0.14em] uppercase text-neutral-500 font-medium"
+                  >
+                    Public
+                  </div>
+                  <h4
+                    class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight"
+                  >
+                    Civic Pavilion
+                  </h4>
+                  <a
+                    href="#"
+                    class="mt-5 block overflow-hidden rounded-2xl ring-1 ring-black/5 bg-neutral-100"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1505843513577-22bb7d21e455?q=80&amp;w=2400&amp;auto=format&amp;fit=crop"
+                      alt="Pavilion with generous canopy and public seating"
+                      class="w-full h-[300px] sm:h-[420px] object-cover transition duration-500 group-hover:scale-[1.03]"
+                    />
+                  </a>
+                  <div
+                    class="mt-3 flex items-center justify-between text-sm text-neutral-600"
+                  >
+                    <span>Raleigh, NC</span>
+                    <span
+                      class="inline-flex items-center gap-1 text-neutral-900 font-medium"
+                    >
+                      View Project
+                      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Full-screen image with streaming text -->
+      <section class="relative w-full min-h-screen">
+        <img
+          src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/704e1fb3-a82b-42a1-ad5f-f30d6c0fb05c_1600w.jpg"
+          alt="Modern solar-powered home with EV at dusk"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-neutral-900/30"></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/50"
+        ></div>
+
+        <!-- Streaming text -->
+        <div
+          class="relative z-10 h-full w-full flex flex-col items-center justify-center gap-10 overflow-hidden text-center"
+        >
+          <!-- Row 1 -->
+          <div class="w-[200%]">
+            <div
+              class="flex items-center gap-12"
+              style="animation: marqueeX 36s linear infinite;"
+            >
+              <p
+                class="whitespace-nowrap text-white text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight"
+              >
+                Design that endures
+              </p>
+              <i
+                data-lucide="sparkles"
+                class="w-8 h-8 sm:w-10 sm:h-10 text-white/80"
+              ></i>
+              <p
+                class="whitespace-nowrap text-white text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight"
+              >
+                Thoughtful details at every scale
+              </p>
+              <i
+                data-lucide="sparkles"
+                class="w-8 h-8 sm:w-10 sm:h-10 text-white/80"
+              ></i>
+              <p
+                class="whitespace-nowrap text-white text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight"
+              >
+                Context, craft, clarity
+              </p>
+              <i
+                data-lucide="sparkles"
+                class="w-8 h-8 sm:w-10 sm:h-10 text-white/80"
+              ></i>
+              <p
+                class="whitespace-nowrap text-white text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight"
+              >
+                Design that endures
+              </p>
+              <i
+                data-lucide="sparkles"
+                class="w-8 h-8 sm:w-10 sm:h-10 text-white/80"
+              ></i>
+              <p
+                class="whitespace-nowrap text-white text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight"
+              >
+                Thoughtful details at every scale
+              </p>
+            </div>
+          </div>
+
+          <!-- Row 2 (reverse for depth) -->
+          <div class="w-[200%]">
+            <div
+              class="flex items-center gap-12"
+              style="animation: marqueeX 44s linear infinite reverse;"
+            >
+              <p
+                class="whitespace-nowrap text-white/90 text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight"
+              >
+                Homes, spaces, and experiences
+              </p>
+              <i
+                data-lucide="chevron-right"
+                class="w-8 h-8 sm:w-10 sm:h-10 text-white/70"
+              ></i>
+              <p
+                class="whitespace-nowrap text-white/90 text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight"
+              >
+                Built with purpose
+              </p>
+              <i
+                data-lucide="chevron-right"
+                class="w-8 h-8 sm:w-10 sm:h-10 text-white/70"
+              ></i>
+              <p
+                class="whitespace-nowrap text-white/90 text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight"
+              >
+                Crafted for longevity
+              </p>
+              <i
+                data-lucide="chevron-right"
+                class="w-8 h-8 sm:w-10 sm:h-10 text-white/70"
+              ></i>
+              <p
+                class="whitespace-nowrap text-white/90 text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight"
+              >
+                Homes, spaces, and experiences
+              </p>
+              <i
+                data-lucide="chevron-right"
+                class="w-8 h-8 sm:w-10 sm:h-10 text-white/70"
+              ></i>
+              <p
+                class="whitespace-nowrap text-white/90 text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight"
+              >
+                Built with purpose
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-2">
+            <a
+              href="#"
+              class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-white/95 text-neutral-900 text-sm hover:bg-white transition shadow-sm"
+            >
+              Start Your Brief
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-6 sm:px-8 py-8">
+      <div
+        class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+      >
+        <div class="text-sm text-neutral-600">© 2025 Atelier Architects</div>
+        <div class="flex items-center gap-4 text-sm">
+          <a
+            href="#"
+            class="text-neutral-600 hover:text-neutral-900 transition"
+          >
+            Instagram
+          </a>
+          <a
+            href="#"
+            class="text-neutral-600 hover:text-neutral-900 transition"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="#"
+            class="text-neutral-600 hover:text-neutral-900 transition"
+          >
+            X
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      // Initialize lucide icons once DOM is ready
+      lucide.createIcons();
+
+      // Slider logic (Hero)
+      const slides = Array.from(document.querySelectorAll('[data-slide]'));
+      const prev = document.getElementById('prevBtn');
+      const next = document.getElementById('nextBtn');
+      const dots = Array.from(document.querySelectorAll('[data-dot]'));
+      let index = 0;
+
+      function setActiveDot(i) {
+        dots.forEach((d, di) => {
+          if (di === i) {
+            d.classList.remove('bg-white/50');
+            d.classList.add('bg-white');
+            d.style.width = '18px';
+            d.style.borderRadius = '9999px';
+          } else {
+            d.classList.add('bg-white/50');
+            d.classList.remove('bg-white');
+            d.style.width = '10px';
+            d.style.borderRadius = '9999px';
+          }
+        });
+      }
+
+      function showSlide(i) {
+        index = (i + slides.length) % slides.length;
+        slides.forEach((img, idx) => {
+          img.style.opacity = idx === index ? '1' : '0';
+        });
+        setActiveDot(index);
+      }
+
+      prev.addEventListener('click', () => showSlide(index - 1));
+      next.addEventListener('click', () => showSlide(index + 1));
+      dots.forEach((d, i) => d.addEventListener('click', () => showSlide(i)));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') showSlide(index - 1);
+        if (e.key === 'ArrowRight') showSlide(index + 1);
+      });
+
+      showSlide(0);
+
+      // Before/After Comparison
+      const compare = document.getElementById('compare');
+      const afterLayer = document.getElementById('afterLayer');
+      const divider = document.getElementById('divider');
+      const knob = document.getElementById('knob');
+      const range = document.getElementById('compareRange');
+
+      let isDragging = false;
+
+      function setPositionByClientX(clientX) {
+        const rect = compare.querySelector('div.relative.w-full').getBoundingClientRect();
+        let x = clientX - rect.left;
+        x = Math.max(0, Math.min(x, rect.width));
+        const pct = (x / rect.width) * 100;
+        afterLayer.style.width = pct + '%';
+        divider.style.left = pct + '%';
+        knob.style.left = pct + '%';
+        range.value = pct;
+      }
+
+      function setPositionByPercent(pct) {
+        pct = Math.max(0, Math.min(pct, 100));
+        afterLayer.style.width = pct + '%';
+        divider.style.left = pct + '%';
+        knob.style.left = pct + '%';
+      }
+
+      // Initialize to 50%
+      setPositionByPercent(50);
+
+      // Pointer events for drag
+      function startDrag(e) {
+        isDragging = true;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        setPositionByClientX(clientX);
+        e.preventDefault();
+      }
+      function onMove(e) {
+        if (!isDragging) return;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        setPositionByClientX(clientX);
+      }
+      function endDrag() {
+        isDragging = false;
+      }
+
+      compare.addEventListener('mousedown', startDrag);
+      compare.addEventListener('touchstart', startDrag, { passive: false });
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('touchmove', onMove, { passive: false });
+      window.addEventListener('mouseup', endDrag);
+      window.addEventListener('touchend', endDrag);
+
+      knob.addEventListener('keydown', (e) => {
+        const step = 2; // percent
+        if (e.key === 'ArrowLeft') {
+          setPositionByPercent(parseFloat(range.value) - step);
+          range.value = parseFloat(range.value) - step;
+        }
+        if (e.key === 'ArrowRight') {
+          setPositionByPercent(parseFloat(range.value) + step);
+          range.value = parseFloat(range.value) + step;
+        }
+      });
+
+      range.addEventListener('input', (e) => {
+        setPositionByPercent(parseFloat(e.target.value));
+      });
+    </script>
+  </body>
+</html>
