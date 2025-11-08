@@ -6,13 +6,14 @@ This document provides instructions for AI assistants working on this WordPress 
 
 ## Table of Contents
 1. [Theme Setup (New Projects)](#theme-setup-new-projects)
-2. [Theme Architecture](#theme-architecture)
-3. [HTML to Pattern Workflow](#html-to-pattern-workflow)
-4. [Universal Block Markup](#universal-block-markup)
-5. [Content Collections (Markdown Sync)](#content-collections-markdown-sync)
-6. [Development Commands](#development-commands)
-7. [File Organization](#file-organization)
-8. [Best Practices](#best-practices)
+2. [Design System & Styles Guide](#design-system--styles-guide)
+3. [Theme Architecture](#theme-architecture)
+4. [HTML to Pattern Workflow](#html-to-pattern-workflow)
+5. [Universal Block Markup](#universal-block-markup)
+6. [Content Collections (Markdown Sync)](#content-collections-markdown-sync)
+7. [Development Commands](#development-commands)
+8. [File Organization](#file-organization)
+9. [Best Practices](#best-practices)
 
 ---
 
@@ -61,6 +62,75 @@ If working with a user who cloned directly without setup:
 2. **Explain:** The setup script updates theme name, author, and removes boilerplate branding
 3. **Guide:** Point them to `.github/TEMPLATE_SETUP.md` for instructions
 4. **Proceed carefully:** If they skip setup, they'll be pushing to the boilerplate's git remote (not their own)
+
+---
+
+## Design System & Styles Guide
+
+**📖 REQUIRED READING:** [src/docs/styles-guide.md](src/docs/styles-guide.md)
+
+This theme follows a comprehensive design system for **Barnes Design Group**, an architectural firm specializing in church design. Before building new pages or components, **ALWAYS** reference the styles guide.
+
+### Quick Reference
+
+**Design Philosophy:**
+- Minimalist, sophisticated architectural aesthetic
+- Neutral grayscale color palette (no blues, greens, reds)
+- High-quality photography with overlay patterns
+- Generous whitespace and clean typography
+
+**Color System:**
+```css
+/* Primary palette - neutral grayscale only */
+neutral-50, 100, 200, 300, 500, 600, 700, 800, 900, 950
+white, black
+
+/* Opacity overlays */
+white/95, white/90, white/85, white/80 (on dark backgrounds)
+black/60, black/50, black/40, black/30, black/20 (on images)
+```
+
+**Typography:**
+```css
+/* Body & UI */
+font-family: Inter
+
+/* Display headings only */
+font-family: 'Playfair Display'
+
+/* Eyebrow labels */
+text-[11px] tracking-[0.14em] uppercase font-medium text-neutral-500
+
+/* Section headings */
+text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight
+```
+
+**Component Patterns:**
+- Buttons: `rounded-full`, `h-10/h-11`, `px-4/px-5`
+- Cards: `rounded-2xl`, `border-neutral-200`, `shadow-sm`, `ring-1 ring-black/5`
+- Images: `rounded-2xl`, `object-cover`, `group-hover:scale-[1.03]`
+- Container: `max-w-7xl mx-auto px-6 sm:px-8`
+- Section spacing: `py-20 sm:py-24 lg:py-28`
+
+### When Building New Components
+
+**ALWAYS:**
+1. ✅ Reference [styles-guide.md](src/docs/styles-guide.md) for patterns
+2. ✅ Use neutral colors only (50-950 scale)
+3. ✅ Apply `tracking-tight` to all headings
+4. ✅ Include eyebrow labels for section categories
+5. ✅ Add responsive scaling (`sm:`, `md:`, `lg:`)
+6. ✅ Use `transition` on all interactive elements
+7. ✅ Apply `ring-1 ring-black/5` for subtle card depth
+
+**NEVER:**
+1. ❌ Use colors outside neutral palette
+2. ❌ Use Playfair Display on body text (hero h1 only)
+3. ❌ Forget responsive variants on spacing
+4. ❌ Mix border radii (use `rounded-2xl` consistently)
+5. ❌ Use hard shadows (only `shadow-sm`)
+
+**Full documentation:** [src/docs/styles-guide.md](src/docs/styles-guide.md)
 
 ---
 

@@ -1,1 +1,101 @@
-<section data-block-name="cta"><!-- empty --></section>
+<section id="compare" class="relative">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 py-20 sm:py-24 lg:py-28">
+          <div class="max-w-3xl">
+            <h3 class="text-3xl sm:text-4xl font-semibold tracking-tight">
+              Before &amp; After
+            </h3>
+            <p class="mt-4 text-base sm:text-lg text-neutral-700">
+              Drag the handle to compare an in‑progress shell with the completed
+              space. Precision in detailing transforms structure into
+              atmosphere.
+            </p>
+          </div>
+
+          <!-- Compare Component -->
+          <div
+            id="compare"
+            class="mt-10 relative w-full rounded-2xl overflow-hidden bg-neutral-200 select-none bg-neutral-100 ring-1 ring-black/5"
+          >
+            <!-- Maintain aspect by padding box -->
+            <div
+              class="relative w-full cursor-ew-resize"
+              style="padding-bottom: 56.25%;"
+            >
+              <!-- Base (Before) -->
+              <img
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&amp;w=2000&amp;auto=format&amp;fit=crop"
+                alt="Before: interior under construction"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+
+              <!-- Overlay (After) -->
+              <div
+                id="afterLayer"
+                class="absolute inset-y-0 left-0 w-1/2 overflow-hidden transition-all duration-200 ease-out"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&amp;w=2000&amp;auto=format&amp;fit=crop"
+                  alt="After: finished modern interior"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+
+              <!-- Labels -->
+              <div class="absolute left-4 top-4 z-20">
+                <span
+                  class="inline-flex items-center h-8 px-3 rounded-full text-xs font-medium bg-white/80 backdrop-blur text-neutral-900 shadow-sm border border-white/40"
+                >
+                  Before
+                </span>
+              </div>
+              <div class="absolute right-4 top-4 z-20">
+                <span
+                  class="inline-flex items-center h-8 px-3 rounded-full text-xs font-medium bg-white/80 backdrop-blur text-neutral-900 shadow-sm border border-white/40"
+                >
+                  After
+                </span>
+              </div>
+
+              <!-- Divider / Handle -->
+              <div
+                id="divider"
+                class="absolute top-0 z-30 h-full w-0.5 bg-white/80 left-1/2 bg-white transition-all duration-200 ease-out shadow-[0_0_0_1px_rgba(0,0,0,0.08)]"
+              ></div>
+
+              <!-- Draggable Knob -->
+              <button
+                id="knob"
+                class="absolute z-40 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-sm border border-neutral-200 flex items-center justify-center hover:shadow transition cursor-ew-resize backdrop-blur bg-white/95 ring-1 ring-black/5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20 transition-all duration-200 ease-out"
+                aria-label="Drag to compare"
+                role="slider"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="50"
+              >
+                <i
+                  data-lucide="chevrons-left-right"
+                  class="w-5 h-5 text-neutral-700"
+                ></i>
+              </button>
+
+              <!-- Optional range for keyboard access -->
+              <input
+                id="compareRange"
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                aria-label="Comparison slider"
+                class="absolute z-40 left-1/2 -translate-x-1/2 bottom-5 w-[70%] h-1 appearance-none bg-white/40 rounded-full cursor-ew-resize sr-only"
+                style="accent-color: #0a0a0a;"
+              />
+            </div>
+
+            <!-- Hint -->
+            <div class="flex items-center gap-2 text-sm text-neutral-600 mt-4">
+              <i data-lucide="hand" class="w-4 h-4"></i>
+              <span>Drag the handle or use the arrow keys.</span>
+            </div>
+          </div>
+        </div>
+      </section>

@@ -1,1 +1,93 @@
-<section data-block-name="hero"><h1>Barnes Design Group</h1></section>
+ <!-- Full-screen Hero Slider -->
+      <section id="hero" class="relative w-full min-h-screen">
+        <div
+          id="hero-slider"
+          class="relative w-full min-h-screen overflow-hidden"
+        >
+          <!-- Slides -->
+          <div class="absolute inset-0">
+            <img
+              data-slide=""
+              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out opacity-100"
+              src="https://images.unsplash.com/photo-1621619856624-42fd193a0661?w=1080&q=80"
+              alt="Minimal concrete home with deep overhang at dusk"
+            />
+            <img
+              data-slide=""
+              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out opacity-0"
+              src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&amp;w=2400&amp;auto=format&amp;fit=crop"
+              alt="Warm illuminated courtyard residence in the evening"
+            />
+            <img
+              data-slide=""
+              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out opacity-0"
+              src="https://images.unsplash.com/photo-1642615835477-d303d7dc9ee9?w=1080&q=80"
+              alt="Contemporary hillside villa with large windows"
+            />
+          </div>
+
+          <!-- Overlays for readability -->
+          <div
+            class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/40"
+          ></div>
+
+          <!-- Content: Title + CTA -->
+          <div class="absolute inset-x-0 bottom-0">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 pb-24">
+              <h1
+                class="text-4xl sm:text-6xl lg:text-7xl leading-[1.04] font-semibold tracking-tight text-white max-w-4xl"
+                style="font-family: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;"
+              >
+                Considered Architecture for Timeless Homes
+              </h1>
+              <div class="mt-6">
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-white text-neutral-900 text-sm hover:bg-neutral-100 transition shadow-sm border border-white/20"
+                >
+                  Start a Project
+                  <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overlay Controls -->
+          <div
+            class="pointer-events-none absolute inset-0 flex items-center justify-between px-3 sm:px-4"
+          >
+            <button
+              id="prevBtn"
+              class="pointer-events-auto inline-flex items-center justify-center h-12 w-12 rounded-full bg-white/80 backdrop-blur border border-white/30 text-neutral-900 hover:bg-white transition"
+              aria-label="Previous slide"
+            >
+              <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <button
+              id="nextBtn"
+              class="pointer-events-auto inline-flex items-center justify-center h-12 w-12 rounded-full bg-white/80 backdrop-blur border border-white/30 text-neutral-900 hover:bg-white transition"
+              aria-label="Next slide"
+            >
+              <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- Pagination Dots -->
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2">
+            <div id="dots" class="flex items-center gap-2">
+              <button
+                data-dot="0"
+                class="h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white transition"
+              ></button>
+              <button
+                data-dot="1"
+                class="h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white transition"
+              ></button>
+              <button
+                data-dot="2"
+                class="h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white transition"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </section>

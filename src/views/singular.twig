@@ -6,13 +6,11 @@
  */
 #}
 
-{% include 'partials/header.twig' %}
+{% extends 'partials/base.twig' %}
 
-<main class="site-main">
-	<article class="singular-content">
-		{# Singular content #}
+{% block content %}
+<article class="singular-content">
+	{# Singular content #}
 
-	</article>
-</main>
-
-{% include 'partials/footer.twig' %}
+</article>
+{% endblock %}
